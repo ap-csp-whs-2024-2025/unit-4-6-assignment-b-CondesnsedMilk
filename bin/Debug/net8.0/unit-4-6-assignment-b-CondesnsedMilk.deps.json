@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "unit-4-6-assignment-b-CondesnsedMilk/1.0.0": {
+        "runtime": {
+          "unit-4-6-assignment-b-CondesnsedMilk.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "unit-4-6-assignment-b-CondesnsedMilk/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
