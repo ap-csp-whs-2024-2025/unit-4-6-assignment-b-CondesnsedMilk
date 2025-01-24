@@ -30,30 +30,26 @@ class Program
         }
     }
 
-    static void PrimeList(float numInput)
+    static void PrimeList(float numInput, bool isPrime)
     {
         List<float> primeList = new List<float>();
-        float backwardCount = numInput;
-        bool done = false;
-        int count = 2; 
-        float prime;
 
-        while (count <= backwardCount && !done)
+        while (numInput > 0)
         {
-            if(numInput%count == 0 && count != numInput)
+            IsPrime(numInput, true);
+
+            if (isPrime)
             {
-                prime = backwardCount;
-                backwardCount--;
+                primeList.Append(numInput);
             }
-            else if (numInput%count == 0 && count == numInput)
-            {
-                primeList.Add(prime);
-                backwardCount--;
-                done = true;    
-            }
-            count++; 
+            numInput--;
+            
         }
-        
+
+        for(int i=0; i<primeList.Count; i++)
+        {
+            Console.WriteLine(primeList[i]);
+        }
     }
 
       static void InputPrimeList()
@@ -68,11 +64,11 @@ class Program
             if (numInput > 0)
             {
                 done = true;
-                PrimeList(numInput);
+                PrimeList(numInput, false);
             }
             else
             {
-                Console.WriteLine("Sorry that is a invalid input. Please keep it positive :)");
+                Console.WriteLine("Sorry that is a invalid input. Please stay positive :)");
             }
         }
     }
@@ -89,7 +85,7 @@ class Program
             if (numInput > 0)
             {
                 done = true;
-                IsPrime(numInput);
+                IsPrime(numInput, false);
             }
             else
             {
@@ -98,7 +94,7 @@ class Program
         }
     }
 
-    static void IsPrime(float numInput)
+    static void IsPrime(float numInput, bool primeList)
     {
         int count = 2;
         bool done = false;
@@ -111,19 +107,37 @@ class Program
         {
             while (count <= numInput && !done)
             {
-                if(numInput%count == 0 && count != numInput)
+                if (primeList)
                 {
-                    Console.WriteLine("This is not a prime number!");
-                    done = true;
+                    if(numInput%count == 0 && count != numInput)
+                    {
+                        PrimeList(numInput, false);
+                    }
+                    else
+                    {    
+                        if (numInput%count == 0 && count == numInput)
+                        {
+                            PrimeList(numInput, true);  
+                        }
+                        count++;
+                    }
                 }
                 else
-                {    
-                    if (numInput%count == 0 && count == numInput)
+                {    if(numInput%count == 0 && count != numInput)
                     {
-                        Console.WriteLine("This is a prime number!");
-                        done = true;    
+                        Console.WriteLine("This is not a prime number!");
+                        done = true;
                     }
-                    count++;
+                    else
+                    {    
+                        if (numInput%count == 0 && count == numInput)
+                        {
+                            Console.WriteLine("This is a prime number!");
+                            done = true;    
+
+                        }
+                        count++;
+                    }
                 }
 
             }
